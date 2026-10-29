@@ -1,6 +1,6 @@
 import numpy as np
 from numpy.typing import NDArray
-import math
+
 
 class Solution:
     def forward(self, x: NDArray[np.float64], w: NDArray[np.float64], b: float, activation: str) -> float:
@@ -13,10 +13,14 @@ class Solution:
         # Sigmoid: σ(z) = 1 / (1 + exp(-z))
         # ReLU: max(0, z)
         # return round(your_answer, 5)
-        res = np.dot(x,w) + b
-        o = None
+        def sigmoid(z):
+            return 1.0 / (1.0 + np.exp(-z))
+
+        def relu(z):
+            return max(0.0, z)
+        
+        z = np.dot(w,x) + b
         if activation == 'sigmoid':
-            o = 1 / (1 + math.exp(-res))
-        elif activation == 'relu':
-            o = max(0, res)
-        return float(round(o, 5))
+            return np.round(sigmoid(z), 5)
+        if activation == 'relu':
+            return np.round(relu(z), 5)
