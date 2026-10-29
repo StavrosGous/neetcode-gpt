@@ -15,7 +15,6 @@ class Solution:
         for idx in range(n):
             z = np.dot(prev,weights[idx]) + biases[idx]
             if idx == n-1: break
-            print(z)
             z = np.maximum(z,0)
             prev = z 
         return np.round(z, 5)
