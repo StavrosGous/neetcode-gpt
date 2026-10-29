@@ -13,6 +13,5 @@ class Solution:
         # return np.round(your_answer, 5)
         eps = 1e-5
         x_hat = (x - np.mean(x)) / ((np.var(x) + eps)**0.5)
-        print(x_hat)
         out = gamma * x_hat + beta
         return np.round(out, 5)
